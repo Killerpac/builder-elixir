@@ -10,12 +10,4 @@ task:
       cpu: 8  #8 cpu for dummy build, 10 or more cpu for final build, sometimes more than 8 cpu will cause a timelock, so you wont be able to run ci again within few hours, in build script use -j8 or -j10 depending what you used here, otherwise low memory issue will happen, 16cpu highest
       memory: 24G # So that we can have ram when needed, 24G highest
     install_reqs: # To sync source
-      - git config --global user.name "Sanic" && git config --global user.email "kuromasan@yopmail.com" && git config --global credential.helper "cache --timeout=7200"
-    download_ccache_background_script: # To download ccache in background
-      - ./download_ccache # Ccache download script
-    sync_script: # To sync source
-      - ./sync # Source sync script
-    monitor_background_script: # To monitor ccache and machine status every minute, runs in background
-      - ./monitor # Monitor script
-    build_script: # Actual build script foreground
-      - ./build # Build script to run
+        - pppap
