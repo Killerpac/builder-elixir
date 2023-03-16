@@ -19,3 +19,5 @@ task:
       - ./monitor # Monitor script
     build_script: # Actual build script foreground
       - ./build # Build script to run
+    cont:
+      - ./continue
