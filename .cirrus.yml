@@ -3,16 +3,12 @@ env: # Environt variable to pass to all tasks
     CIRRUS_WORKING_DIR: "/tmp/ci" # Where to clone repo
 
 task:
- name: builder # Project name
-   timeout_in: 4h
-     persistent_worker:
-        labels:
-           name: AX61-1
-          isolation:
-      container:
-        image: accupara/aosp:latest
-        cpu: 24
-        memory: 120G
+    name: builder # Project name
+    timeout_in: 240m # Otherwise it will timeout at 60m automatically, 120m highest in free accoun
+    container:
+      image: accupara/aosp:latest # It has built in etup environment + repo, aria2, rclone, pigz, username ci, and email ci@ci.ci [You can use your own docker image if you want, or you can use this one too!]
+      cpu: 16  #8 cpu for dummy build, 10 or more cpu for final build, sometimes more than 8 cpu will cause a timelock, so you wont be able to run ci again within few hours, in build script use -j8 or -j10 depending what you used here, otherwise low memory issue will happen, 16cpu highest
+      memory: 24G # So that we can have ram when needed, 24G highest
     install_reqs: # To sync source
       - git config --global user.name "Sanic" && git config --global user.email "kuromasan@yopmail.com" && git config --global credential.helper "cache --timeout=7200"
     download_ccache_background_script: # To download ccache in background
