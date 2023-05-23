@@ -34,4 +34,4 @@ make system-api-stubs-docs || echo no problem
 make test-api-stubs-docs || echo no problem
 
 
-brunch aosp_nashc-userdebug -j8 
+brunch spark_nashc-userdebug -j8 
